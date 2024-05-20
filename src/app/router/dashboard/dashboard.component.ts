@@ -8,21 +8,28 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {CommonModule} from "@angular/common";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
-  imports: [
-      MatCardModule,
-    MatDividerModule,
-    MatButtonModule,
-      MatPaginatorModule,
-      MatIconModule,
-      MatChipsModule,
-      MatGridListModule
-  ],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatChipsModule,
+        MatGridListModule,
+        MatFormFieldModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatProgressBar
+    ],
 })
 export class DashboardComponent {
   data: dashboard_data_dto_v1[] = [];
@@ -32,12 +39,12 @@ export class DashboardComponent {
   constructor(private dataService: DashboardDataService) {}
 
   ngOnInit(): void {
-    this.loadData(0, 10, ''); // загрузка первой страницы с размером страницы 10
+    this.loadData(0, 8, ''); // загрузка первой страницы с размером страницы 10
   }
 
   applyFilter(event: any) {
     const value = (event.target as HTMLInputElement).value; // Получаем значение поля ввода
-    this.loadData(0, 10, value.trim().toLowerCase());
+    this.loadData(0, 8, value.trim().toLowerCase());
   }
 
   loadData(page: number, size: number, param: string) {

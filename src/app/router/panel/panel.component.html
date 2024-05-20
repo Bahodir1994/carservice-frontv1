@@ -1,8 +1,8 @@
-<mat-toolbar color="primary" class="mat-elevation-z8">
+<mat-toolbar  color="primary" class="mat-elevation-z8 position-fixed">
     <button (click)="drawer.toggle()" mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button>
-    <span>Material UI Tutorial</span>
+    <span>{{username}}</span>
     <span class="example-spacer"></span>
     <button routerLink="" mat-button>Home</button>
     <button [matMenuTriggerFor]="lvl1master" mat-button>Master</button>
@@ -39,8 +39,8 @@
         <mat-icon matBadgeColor="accent" matBadge="15" [matBadgeHidden]="badge_visible" matBadgeSize="small">notifications</mat-icon>
     </button>
 </mat-toolbar>
-<mat-drawer-container autosize>
-    <mat-drawer #drawer opened="true" mode="side" position="start">
+<mat-drawer-container class="content-container" autosize>
+    <mat-drawer #drawer opened="true" mode="side" position="start" class="sidenav-bg">
         <mat-nav-list>
             <mat-list-item>
                 <button
@@ -55,19 +55,20 @@
             <mat-divider class="m-d-p-5"></mat-divider>
             <mat-list-item>
                 <button
-                        mat-flat-button [routerLink]="'/clients'"
-                        [color]="isActive('/clients') ? 'primary' : ''"
-                        [class]="{ 'active-link': isActive('/clients')}"
-                >                    <mat-icon>home</mat-icon>
+                    mat-flat-button [routerLink]="'/clients'"
+                    [color]="isActive('/clients') ? 'primary' : ''"
+                    [class]="{ 'active-link': isActive('/clients')}"
+                >
+                    <mat-icon>home</mat-icon>
                     USTAXONA MIJOZLARI
                 </button>
             </mat-list-item>
             <mat-divider class="m-d-p-5"></mat-divider>
             <mat-list-item>
                 <button
-                        mat-flat-button [routerLink]="'/statistics'"
-                        [color]="isActive('/statistics') ? 'primary' : ''"
-                        [class]="{ 'active-link': isActive('/statistics')}"
+                    mat-flat-button [routerLink]="'/statistics'"
+                    [color]="isActive('/statistics') ? 'primary' : ''"
+                    [class]="{ 'active-link': isActive('/statistics')}"
                 >
                     <mat-icon>explore</mat-icon>
                     HISOBOTLAR
@@ -76,8 +77,8 @@
             <mat-divider class="m-d-p-5"></mat-divider>
         </mat-nav-list>
     </mat-drawer>
-    <mat-drawer-content>
-        <div style="text-align: center; height: 93.6vh; padding: 20px">
+    <mat-drawer-content >
+        <div class="content">
             <router-outlet></router-outlet>
         </div>
     </mat-drawer-content>

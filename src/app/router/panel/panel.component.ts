@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
@@ -21,8 +21,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDialogModule} from "@angular/material/dialog";
 import {CommonModule} from "@angular/common";
-import {BrowserModule} from "@angular/platform-browser";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { KeycloakService } from 'keycloak-angular';
+import {KeycloakOperationService} from "../../services/keycloak.service";
 
 @Component({
   selector: 'app-panel',
@@ -53,17 +53,28 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
       MatRadioModule,
       MatCheckboxModule,
       MatDialogModule
-
   ],
 })
-export class PanelComponent {
+export class PanelComponent implements OnInit {
+    username: string | any
+    userProfile: any | null = null;
     badge_visible = false;
     badge_visibility() {this.badge_visible = true;}
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private keyCloakService: KeycloakOperationService,
+    ) {}
 
     isActive(url: string): boolean {
-        console.log(this.router.url)
         return this.router.url === url;
+    }
+
+    ngOnInit(): void {
+        this.keyCloakService.getUserProfile().then((data: any) => {
+            this.userProfile = data;
+            this.username = this.userProfile.firstName + ' ' + this.userProfile.lastName;
+            console.table(this.userProfile);
+        });
     }
 }

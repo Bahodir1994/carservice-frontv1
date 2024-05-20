@@ -2,15 +2,28 @@ h1 {
     color: #495057;
 }
 
+.w-100 {
+    width: 100%;
+}
+
 .card-grid {
     display: flex;
     flex-wrap: wrap;
+}
+
+.element-bg {
+    -webkit-box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
+    box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
 }
 
 .card {
     width: calc(25% - 20px); /* Вычисляем ширину для 4 карточек на строку с отступами */
     margin: 10px;
     background-color: #fff;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
 .example-header-image {
@@ -48,6 +61,18 @@ h1 {
     color: black;
     border-radius: 4px; /* Adjust border radius as needed */
     vertical-align: middle;
+}
+
+.search-container {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+.search-container input {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .card-header-image_v1 {
@@ -99,6 +124,9 @@ h1 {
     transition: opacity .2s ease-out;
 }
 
+.form-field-w-50 {
+    width: 30%;
+}
 
 /**********************/
 body {
@@ -106,7 +134,7 @@ body {
 }
 
 .container {
-    width: 1200px !important;
+    width: 100% !important;
     padding: 0 !important;
     margin-right: auto;
     margin-left: auto;
@@ -215,4 +243,113 @@ img {
     color: hsla(0, 0%, 100%, 0.5);
     font-size: 16px;
     max-width: 470px;
+}
+
+.justify-content-center {
+    display: flex;
+    align-items: normal;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/********* car-number ****/
+.numberImg {
+    position: relative;
+    /* border-bottom: 1px solid #ccc; */
+    /* padding-bottom: 20px; */
+    border: 4px solid #353535;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.numberImg::before{
+    left: 3px;
+    position: absolute;
+    top: 45%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    content: "";
+    background: #353535;
+    border-radius: 50%;
+}
+
+.numberImg::after{
+    right: 3px;
+    position: absolute;
+    top: 45%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    content: "";
+    background: #353535;
+    border-radius: 50%;
+}
+
+.numberImgRegion {
+    width: 25%;
+    text-align: center;
+    border-right: 2px solid #353535;
+
+    height: 100%;
+    margin-bottom: 0px;
+    font-size: 28px;
+    font-family: roadNumbers;
+    font-weight: bold;
+    color: #2E2E2E;
+    line-height: 1.2;
+}
+
+.numberImgNum {
+    width: 70%;
+    text-align: left;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    padding-right: 20px;
+    background-image: url('../../../assets/icons/card-icon/numberBlockB.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 11% 70%;
+
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #2E2E2E;
+    line-height: 1.2;
+}
+
+.card-subtitle {
+    color: royalblue;
+}
+
+.mat-form-field-class {
+    ::ng-deep .custom-mat-form-field {
+        background-color: #f5f5f5; /* Background color */
+        border: 1px solid #3f51b5; /* Border color */
+        border-radius: 4px; /* Optional: To make the corners rounded */
+
+        .mat-form-field-outline {
+            border-color: #3f51b5; /* Outline border color */
+        }
+
+        .mat-form-field-outline-thick {
+            border-width: 2px; /* Optional: Adjust the thickness of the outline */
+        }
+
+        .mat-form-field-label {
+            color: #3f51b5; /* Label color */
+        }
+
+        .mat-input-element {
+            color: #000; /* Input text color */
+        }
+
+        .mat-form-field-label-floating {
+            color: #3f51b5 !important; /* Label color when floating */
+        }
+    }
+
 }

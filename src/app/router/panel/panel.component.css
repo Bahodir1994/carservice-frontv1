@@ -2,12 +2,55 @@
     flex: 1 1 auto;
 }
 
+.position-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.content-container {
+    height: 100vh;
+    margin-top: 64px; /* Adjust based on your toolbar height */
+    position: fixed;
+    width: 100%;
+}
+
+
+.content {
+    padding: 20px;
+    height: calc(100vh - 64px); /* Adjust based on your toolbar height */
+    overflow: auto;
+}
+
+@media (max-width: 600px) {
+    .position-fixed {
+        height: 56px;
+    }
+
+    .content-container {
+        margin-top: 56px; /* Adjust based on your toolbar height */
+    }
+
+    .content {
+        height: calc(100vh - 56px); /* Adjust based on your toolbar height */
+    }
+}
 
 /*******active-link button setting********/
 .active-link {
     width: 100%;
 }
 /****************************************/
+
+.sidenav-bg {
+    -webkit-box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
+    box-shadow: 0px 5px 10px 8px rgba(34, 60, 80, 0.4);
+    background-repeat: no-repeat; /* Set desired repeat behavior (optional) */
+    background-size: cover; /* Set desired size behavior (optional) */
+    background-position: center; /* Set desired position (optional) */
+}
 
 
 .m-d-p-5 {

@@ -5,10 +5,11 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       keycloak.init({
           config: {
               url: 'http://localhost:8080',
-              realm: 'carserviceauth',
-              clientId: 'carserviceapp-client',
+              realm: 'carappservicev1',
+              clientId: 'carapp-clientv1',
           },
           enableBearerInterceptor: true,
+          loadUserProfileAtStartUp: true,
           bearerPrefix: 'Bearer',
           bearerExcludedUrls: ['/assets'],
           initOptions: {

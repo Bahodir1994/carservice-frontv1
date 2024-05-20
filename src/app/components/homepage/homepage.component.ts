@@ -25,7 +25,6 @@ export class HomepageComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
-    this.getAllMovies();
     this.keyCloakService.getUserProfile().then((data: any) => {
       this.userProfile = data;
       console.table(this.userProfile);

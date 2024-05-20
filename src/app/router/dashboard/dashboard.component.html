@@ -1,84 +1,50 @@
-<mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card-option">
-                <div class="container-card bg-green-box d-flex justify-content-between">
-                    <p class="card-title">Jami xizmat ko'rsatilgan</p>
-                    <img src="assets/icons/card-icon/up.png" class="icon-styles">
-                </div>
-            </div>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card-option col-lg-6 col-md-3 col-sm-3">
-                <div class="container-card bg-white-box d-flex justify-content-between">
-                    <p class="card-title">Vaqti yaqinlashgan</p>
-                    <img src="assets/icons/card-icon/pie-chart.png" class="icon-styles">
-                </div>
-            </div>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card-option col-lg-6 col-md-3 col-sm-3">
-                <div class="container-card bg-yellow-box d-flex justify-content-between">
-                    <p class="card-title">Oxirgi 1 oy mobaynida</p>
-                    <img src="assets/icons/card-icon/pyramid.png" class="icon-styles">
-                </div>
-            </div>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card-option col-lg-6 col-md-3 col-sm-3">
-                <div class="container-card bg-blue-box d-flex justify-content-between">
-                    <p class="card-title">Jami ro'yxatdan o'tgan</p>
-                    <img src="assets/icons/card-icon/profit.png" class="icon-styles">
-                </div>
-            </div>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
-
-<div class="row col-12 w-100 mt-3 d-flex justify-content-center">
-    <input type="search"
-           class="search form-control w-50" name=""
-           placeholder="Avtolarni filtr qilish, izlash"
-           id="searchInput"
-           matInput #searchInput
-           (keyup)="applyFilter($event)"
-    >
+<div class="justify-content-center">
+    <div>
+        <mat-form-field appearance="outline" class="mat-form-field-class">
+            <mat-label>IZLASH</mat-label>
+            <input type="text"
+                   placeholder="Avtolarni filtr qilish, izlash"
+                   id="searchInput"
+                   matInput #searchInput
+                   (keyup)="applyFilter($event)"
+            >
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-paginator class="element-bg"
+                [length]="recordsTotal"
+                [pageSize]="10"
+                [pageSizeOptions]="[8, 15, 25, 100]"
+                (page)="onPageChange($event, searchInput.value)">
+        </mat-paginator>
+    </div>
 </div>
 <div class="card-grid car-list">
     <mat-card *ngFor="let item of data" class="card">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Akmalov Komil</mat-card-title>
-            <mat-card-subtitle><span class="primary">{{ item.carNumber }}</span></mat-card-subtitle>
+            <mat-card-title>
+                <div class="numberImg">
+                    <span class="numberImgRegion">{{ item.carNumber.substring(0, 2) }}</span>
+                    <span class="numberImgNum">{{ item.carNumber.substring(2) }}</span>
+                </div>
+            </mat-card-title>
+            <mat-card-subtitle class="card-subtitle">
+                Akmalov Komil
+            </mat-card-subtitle>
         </mat-card-header>
         <div class="png-bg" style="display: flex; justify-content: center;">
             <img mat-card-image style="width: 65%;" src="assets/icons/car-models/{{item.carModelCode}}.png" alt="Photo of a Shiba Inu">
         </div>
         <mat-card-content>
             <mat-chip-set aria-label="Fish selection" style="margin-bottom: 20px">
-                <div style="display: flex">
-                    <mat-chip>
-                        ID: {{ item.id }}
-                    </mat-chip>
-                    <mat-chip>
-                        Car Color:
-                        {{ item.carColor }}
-                    </mat-chip>
-                </div>
-                <div style="display: flex">
-                    <mat-chip>
+                <div>
+                    <mat-chip style="width: 100%">
                         <mat-icon class="custom-chip">calendar_today</mat-icon>
-                        <span style="color: black; margin-left: 5px">{{ item.createdDate }}</span>
+                        <span style="margin-left: 5px">{{ item.carParams[0].insTime | date: 'medium'}}</span>
                     </mat-chip>
-                    <mat-chip>
+                    <mat-chip style="width: 100%;">
                         <mat-icon class="custom-chip">speed</mat-icon>
-                        <span style="color: black; margin-left: 5px">{{ item.carModelCode }}</span>
+                        <span style="margin-left: 5px">{{ item.carParams[0].mileage +' - '+  item.carParams[0].mileage}} (km)</span>
                     </mat-chip>
                 </div>
             </mat-chip-set>
@@ -87,18 +53,9 @@
         </mat-card-footer>
     </mat-card>
     <div class="w-100"  *ngIf="data.length === 0" style="display: flex; justify-content: center;">
-        <div class="card text-center w-100">
-            <div class="card-body">
-                <h1 class="h1 text-warning">Ma'lumotlar topilmadi</h1>
-            </div>
-        </div>
+        <img src="assets/icons/card-icon/no-data.png" style="height: 25%"/>
+        <h1>Ma'lumotlar topilmadi</h1>
     </div>
 </div>
 
-<mat-paginator class="paginator-style"
-               [length]="recordsTotal"
-               [pageSize]="10"
-               [pageSizeOptions]="[5, 10, 25, 100]"
-               (page)="onPageChange($event, searchInput.value)">
-</mat-paginator>
 
