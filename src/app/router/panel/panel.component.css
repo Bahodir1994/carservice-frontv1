@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+
+/*******active-link button setting********/
+.active-link {
+    width: 100%;
+}
+/****************************************/
+
+
+.m-d-p-5 {
+    width: 90%;
+    margin: auto;
+}
