@@ -1,18 +1,7 @@
 import {
-  Overlay,
-  OverlayConfig,
-  OverlayModule,
-  TemplatePortal
-} from "./chunk-MIJ3W5BG.js";
-import {
-  CdkScrollableModule,
-  ViewportRuler
-} from "./chunk-GWEUMWZ6.js";
-import "./chunk-XBYCPQN6.js";
-import {
   MAT_FORM_FIELD,
   MatFormField
-} from "./chunk-S2JJXZ7J.js";
+} from "./chunk-NIFBAMYR.js";
 import {
   animate,
   group,
@@ -20,16 +9,21 @@ import {
   style,
   transition,
   trigger
-} from "./chunk-JTAURSMG.js";
+} from "./chunk-PWOMSUGM.js";
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-7MF45EHY.js";
+  Overlay,
+  OverlayConfig,
+  OverlayModule
+} from "./chunk-MYU3PS6U.js";
 import {
-  ActiveDescendantKeyManager,
-  DOWN_ARROW,
-  Directionality,
-  ENTER,
-  ESCAPE,
+  CdkScrollableModule,
+  ViewportRuler
+} from "./chunk-FUXJ3AN6.js";
+import {
+  TemplatePortal
+} from "./chunk-NYZNUP77.js";
+import "./chunk-56REENCE.js";
+import {
   MAT_OPTGROUP,
   MAT_OPTION_PARENT_COMPONENT,
   MatCommonModule,
@@ -37,20 +31,32 @@ import {
   MatOption,
   MatOptionModule,
   MatOptionSelectionChange,
+  _countGroupLabelsBeforeOption,
+  _getOptionScrollPosition
+} from "./chunk-VTWQCDVR.js";
+import {
+  ActiveDescendantKeyManager,
+  addAriaReferencedId,
+  removeAriaReferencedId
+} from "./chunk-V6POKGXL.js";
+import {
+  DOWN_ARROW,
+  Directionality,
+  ENTER,
+  ESCAPE,
   Platform,
   TAB,
   UP_ARROW,
-  _countGroupLabelsBeforeOption,
   _getEventTarget,
-  _getOptionScrollPosition,
-  addAriaReferencedId,
-  hasModifierKey,
-  removeAriaReferencedId
-} from "./chunk-MZY45QQY.js";
+  hasModifierKey
+} from "./chunk-74VKFYIK.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-TBLTIL6E.js";
 import {
   CommonModule,
   DOCUMENT
-} from "./chunk-5EJODUDQ.js";
+} from "./chunk-N5BZIDZN.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -106,7 +112,7 @@ import {
   ɵɵrestoreView,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-VIWO7EDO.js";
+} from "./chunk-UZB4IT3W.js";
 import {
   Subject,
   Subscription,
@@ -118,7 +124,7 @@ import {
   switchMap,
   take,
   tap
-} from "./chunk-T66D2MVS.js";
+} from "./chunk-FMV32KZV.js";
 
 // node_modules/@angular/material/fesm2022/autocomplete.mjs
 var _c0 = ["panel"];

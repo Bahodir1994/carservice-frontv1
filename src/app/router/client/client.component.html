@@ -1,1 +1,166 @@
-<p>client works!</p>
+<h2>Ustaxona mijozlarini qo'shish</h2>
+
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Mijoz Personal ma'lumotlari saqlash
+            </mat-panel-title>
+            <mat-panel-description>
+                F.I.SH, tel raqami, avtomabil turi, avtomabil raqami, kuzov rangi ma'lumotlari kiritiladi
+                <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="row g-3 d-flex">
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label>F.I.O</mat-label>
+                    <input matInput placeholder="Familiya ismi sharifi" formControlName="fio">
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label>Tel raqami</mat-label>
+                    <input matInput placeholder="Misol uchun 998905940402" formControlName="phone">
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label>Avtomabil turi</mat-label>
+                    <mat-select formControlName="carType">
+                        <mat-option>-- Tanlang --</mat-option>
+                        <mat-optgroup *ngFor="let group of carTypeGroups" [label]="group.name">
+                            <mat-option *ngFor="let car of group.pokemon" [value]="car.value">{{car.viewValue}}</mat-option>
+                        </mat-optgroup>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label>Avtomabil raqami</mat-label>
+                    <input matInput placeholder="Misol: 01A555AA" formControlName="carNumber">
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label>Kuzov rangi</mat-label>
+                    <mat-select formControlName="carColor">
+                        <mat-option value="white">Oq</mat-option>
+                        <mat-option value="black">Qora</mat-option>
+                        <mat-option value="metallic">Metalik</mat-option>
+                        <mat-option value="blue">Ko'k</mat-option>
+                        <mat-option value="red">Qizil</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-auto my-auto">
+                <button mat-fab extended color="primary">
+                    <mat-icon>save</mat-icon>
+                    Saqlash
+                </button>
+            </div>
+        </form>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel opened hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Mening ustaxonam mijozlari
+            </mat-panel-title>
+            <mat-panel-description>
+                Ustaxona mijozi va uning avtomabili xaqida ma'lumot
+                <mat-icon>date_range</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="mt-2 w-25" style="margin-left: 15px">
+            <mat-form-field appearance="outline" class="input-group">
+                <mat-label>Izlash</mat-label>
+                <input
+                        id="searchInputClients"
+                        matInput #searchInputData
+                        (keyup)="applyFilter($event)"
+                >
+            </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="mat-elevation-z8" style="width: 48%">
+                <table mat-table [dataSource]="data" class="mat-elevation-z8">
+
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef>F.I.O<th>
+                        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="phone">
+                        <th mat-header-cell *matHeaderCellDef> Telefon raqami </th>
+                        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator class="paginator-style"
+                               [length]="recordsTotal"
+                               [pageSize]="10"
+                               [pageSizeOptions]="[5, 10, 25, 100]"
+                               (page)="onPageChange($event, searchInputData.value)">
+                </mat-paginator>
+            </div>
+            <div class="mat-elevation-z8" style="width: 48%">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>Akmalov Komil</mat-card-title>
+                        <mat-card-subtitle><span class="primary">0112A</span></mat-card-subtitle>
+                    </mat-card-header>
+                    <div class="png-bg" style="display: flex; justify-content: center;">
+                        <img mat-card-image style="width: 65%;" src="assets/icons/car-models/001.png" alt="Photo of a Shiba Inu">
+                    </div>
+                    <mat-card-content>
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-chip-option selected="true" class="disabled-chip">
+                                    kuzov rangi
+                                </mat-chip-option>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>
+                                <mat-chip-option selected="true" class="disabled-chip">
+                                    avto modeli
+                                </mat-chip-option>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Item 3</mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                    <mat-card-footer>
+                    </mat-card-footer>
+                </mat-card>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+

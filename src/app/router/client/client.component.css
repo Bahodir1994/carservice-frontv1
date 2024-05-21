@@ -1,0 +1,26 @@
+.example-panel-red.mat-mdc-select-panel {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.example-panel-green.mat-mdc-select-panel {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+.example-panel-blue.mat-mdc-select-panel {
+    background: rgba(0, 0, 255, 0.5);
+}
+
+tr:hover {
+    background-color: lightyellow;
+    cursor: pointer;
+}
+
+.disabled-chip {
+    opacity: 1; /* You can adjust the opacity to make it look muted */
+    pointer-events: none; /* Disable pointer events to prevent interaction */
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-around;
+}
