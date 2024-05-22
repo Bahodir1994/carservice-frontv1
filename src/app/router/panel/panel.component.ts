@@ -21,7 +21,6 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDialogModule} from "@angular/material/dialog";
 import {CommonModule} from "@angular/common";
-import { KeycloakService } from 'keycloak-angular';
 import {KeycloakOperationService} from "../../services/keycloak.service";
 
 @Component({
@@ -76,5 +75,9 @@ export class PanelComponent implements OnInit {
             this.username = this.userProfile.firstName + ' ' + this.userProfile.lastName;
             console.table(this.userProfile);
         });
+    }
+
+    logout() {
+        this.keyCloakService.logout();
     }
 }

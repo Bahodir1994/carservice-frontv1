@@ -24,3 +24,15 @@ tr:hover {
     display: flex;
     justify-content: space-around;
 }
+
+.list-title {
+    color: blue;
+}
+
+.mat-list-element:hover {
+    background-color: rgba(236, 212, 255, 0.33);
+}
+
+.list-element-in:hover {
+    color: #ffffff!important;
+}

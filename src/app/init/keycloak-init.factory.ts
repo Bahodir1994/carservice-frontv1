@@ -17,5 +17,15 @@ export function initializeKeycloak(keycloak: KeycloakService) {
               silentCheckSsoRedirectUri:
                   window.location.origin + '/assets/silent-check-sso.html',
           },
-      });
+
+      }).then(authenticated => {
+        if (authenticated) {
+            const token = keycloak.getKeycloakInstance().token;
+            if (token) {
+                localStorage.setItem('accessToken', token);
+            }
+        }
+    }).catch(error => {
+        console.error('Keycloak initialization failed', error);
+    });
 }

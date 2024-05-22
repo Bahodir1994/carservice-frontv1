@@ -61,105 +61,135 @@
                 </button>
             </div>
         </form>
-
     </mat-expansion-panel>
 
-    <mat-expansion-panel opened hideToggle>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Mening ustaxonam mijozlari
-            </mat-panel-title>
-            <mat-panel-description>
-                Ustaxona mijozi va uning avtomabili xaqida ma'lumot
-                <mat-icon>date_range</mat-icon>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <div class="mt-2 w-25" style="margin-left: 15px">
-            <mat-form-field appearance="outline" class="input-group">
-                <mat-label>Izlash</mat-label>
-                <input
-                        id="searchInputClients"
-                        matInput #searchInputData
-                        (keyup)="applyFilter($event)"
-                >
-            </mat-form-field>
-        </div>
-
-        <div class="d-flex justify-content-between">
-            <div class="mat-elevation-z8" style="width: 48%">
-                <table mat-table [dataSource]="data" class="mat-elevation-z8">
-
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef>F.I.O<th>
-                        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
-                    </ng-container>
-
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="phone">
-                        <th mat-header-cell *matHeaderCellDef> Telefon raqami </th>
-                        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-                    </ng-container>
-
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="email">
-                        <th mat-header-cell *matHeaderCellDef> Email </th>
-                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-                    </ng-container>
-
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef> Email </th>
-                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-
-                <mat-paginator class="paginator-style"
-                               [length]="recordsTotal"
-                               [pageSize]="10"
-                               [pageSizeOptions]="[5, 10, 25, 100]"
-                               (page)="onPageChange($event, searchInputData.value)">
-                </mat-paginator>
-            </div>
-            <div class="mat-elevation-z8" style="width: 48%">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title>Akmalov Komil</mat-card-title>
-                        <mat-card-subtitle><span class="primary">0112A</span></mat-card-subtitle>
-                    </mat-card-header>
-                    <div class="png-bg" style="display: flex; justify-content: center;">
-                        <img mat-card-image style="width: 65%;" src="assets/icons/car-models/001.png" alt="Photo of a Shiba Inu">
+    <div class="row mt-2">
+        <div class="col">
+            <mat-card>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <mat-list>
+                                <div mat-subheader class="list-title">Mijozlar ro'yxati</div>
+                                <mat-form-field appearance="outline" class="input-group">
+                                    <mat-label>Izlash</mat-label>
+                                    <input
+                                            id="searchInputClients"
+                                            matInput #searchInputData
+                                            (keyup)="applyFilter($event)"
+                                    >
+                                </mat-form-field>
+                                <mat-list-item *ngFor="let item of data"
+                                               class="mat-list-element"
+                                               style="border-bottom: 1px dotted cornflowerblue"
+                                               (click)="onItemClick(item.id, item.fullName)">
+                                    <mat-icon matListItemIcon>folder</mat-icon>
+                                    <div matListItemTitle>{{item.fullName}}</div>
+                                    <div matListItemLine>{{item.phone}}</div>
+                                </mat-list-item>
+                                <mat-paginator
+                                        hidePageSize=true
+                                        [length]="recordsTotal"
+                                        [pageSize]="7"
+                                        (page)="onPageChange($event, searchInputData.value)">
+                                </mat-paginator>
+                            </mat-list>
+                        </div>
+                        <div class="col-10 border-start">
+                            <mat-card style="box-shadow: none!important;">
+                                <mat-card-header>
+                                    <mat-card-title>{{client_fullName !== '' ? client_fullName : 'танланмаган'}}</mat-card-title>
+                                </mat-card-header>
+                                <mat-tab-group>
+                                    <mat-tab label="{{item.carNumber}}" *ngFor="let item of responseData">
+                                        <mat-card-content class="h-100">
+                                            <div class="row h-100 col-md-12 border-primary">
+                                                <div class="row col-md-6">
+                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
+                                                        <mat-card class="example-card bg-success-subtle">
+                                                            <mat-card-header>
+                                                                <mat-card-title-group>
+                                                                    <mat-card-title class="text-primary">Almashtirildi</mat-card-title>
+                                                                    <mat-card-subtitle class="text-primary p-2 rounded">8900 (km)</mat-card-subtitle>
+                                                                    <img mat-card-sm-image src="assets/icons/card-icon/icon-start-oil.png" />
+                                                                </mat-card-title-group>
+                                                            </mat-card-header>
+                                                            <mat-card-content>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
+                                                        <mat-card class="example-card bg-success-subtle">
+                                                            <mat-card-header>
+                                                                <mat-card-title-group>
+                                                                    <mat-card-title class="text-primary">Yangilash</mat-card-title>
+                                                                    <mat-card-subtitle class="text-primary p-2 rounded">9900 (km)</mat-card-subtitle>
+                                                                    <img mat-card-sm-image src="assets/icons/card-icon/icon-change-oil.png" />
+                                                                </mat-card-title-group>
+                                                            </mat-card-header>
+                                                            <mat-card-content>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
+                                                        <mat-card class="example-card bg-success-subtle">
+                                                            <mat-card-header>
+                                                                <mat-card-title-group>
+                                                                    <mat-card-title class="text-primary">Turi</mat-card-title>
+                                                                    <mat-card-subtitle class="text-primary p-2 rounded">ALPINE 15W-30</mat-card-subtitle>
+                                                                    <img mat-card-sm-image src="assets/icons/card-icon/icon-gas-type.png" >
+                                                                </mat-card-title-group>
+                                                            </mat-card-header>
+                                                            <mat-card-content>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
+                                                        <mat-card class="example-card bg-success-subtle">
+                                                            <mat-card-header>
+                                                                <mat-card-title-group>
+                                                                    <mat-card-title class="text-primary">Ishlatildi</mat-card-title>
+                                                                    <mat-card-subtitle class="text-primary p-2 rounded">4.7 (L)</mat-card-subtitle>
+                                                                    <img mat-card-sm-image src="assets/icons/card-icon/icon-gas-tank.png" >
+                                                                </mat-card-title-group>
+                                                            </mat-card-header>
+                                                            <mat-card-content>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
+                                                </div>
+<!--                                                <div *ngFor="let item of responseData">-->
+<!--                                                    <p>id: {{ item.id }}</p>-->
+<!--                                                    <p>carNumber: {{ item.carNumber }}</p>-->
+<!--                                                    <p>createdDate: {{ item.createdDate }}</p>-->
+<!--                                                    <p>carParams: {{ item.carParams }}</p>-->
+<!--                                                    <p>carModelCode: {{ item.carModelCode }}</p>-->
+<!--                                                    <p>carColor: {{ item.carColor }}</p>-->
+<!--                                                </div>-->
+                                                <div class="col-md-6">
+                                                    <div class="col-md-12">
+                                                        <mat-card class="example-card p-2" style="border: 1px dotted #3f50b5">
+                                                            <mat-card-content>
+                                                                <div class="w-100 text-center">
+                                                                    <img mat-card-image style="width: 75%;" src="assets/icons/car-models/001.png" alt="Photo of a Shiba Inu">
+                                                                </div>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                        <mat-card-footer>
+                                        </mat-card-footer>
+                                    </mat-tab>
+                                </mat-tab-group>
+                            </mat-card>
+                        </div>
                     </div>
-                    <mat-card-content>
-                        <mat-list>
-                            <mat-list-item>
-                                <mat-chip-option selected="true" class="disabled-chip">
-                                    kuzov rangi
-                                </mat-chip-option>
-                            </mat-list-item>
-                            <mat-divider></mat-divider>
-                            <mat-list-item>
-                                <mat-chip-option selected="true" class="disabled-chip">
-                                    avto modeli
-                                </mat-chip-option>
-                            </mat-list-item>
-                            <mat-divider></mat-divider>
-                            <mat-list-item>Item 3</mat-list-item>
-                        </mat-list>
-                    </mat-card-content>
-                    <mat-card-footer>
-                    </mat-card-footer>
-                </mat-card>
-            </div>
+                </mat-card-content>
+            </mat-card>
         </div>
-    </mat-expansion-panel>
+    </div>
 </mat-accordion>
 
 

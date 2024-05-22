@@ -1,3 +1,23 @@
+export interface car_param_data {
+    insTime: number;
+    mileage: number;
+    toMileage: number;
+    oilModel: string;
+    fillingVolume: string;
+    oilFilter: string;
+    airFilter: string;
+    salonFilter: string;
+}
+
+export interface client_cars_data_dto_v1 {
+    id: number;
+    carNumber: string;
+    createdDate: string;
+    carParams: car_param_data[];
+    carModelCode: string;
+    carColor: string;
+}
+
 export interface products_data_dto_v1
 {
     id: string;

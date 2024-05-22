@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Servis xizmatni kiritish</h2>
+<mat-dialog-content class="mat-typography rounded">
+    <form [formGroup]="carParamForm" (ngSubmit)="onSubmitCarParams()">
+        <div class="w-100 row col-12 py-2">
+            <div class="row w-100 justify-content-between">
+                <div class="col-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Joriy masofa</mat-label>
+                        <input matInput placeholder="yurgan yo'li (km)" formControlName="currentDistance">
+                        <mat-icon matSuffix>speed</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Masofa (gacha)</mat-label>
+                        <input matInput placeholder="yo'li gacha (km)" formControlName="distanceTo">
+                        <mat-icon matSuffix>speed</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Mator moyi turi</mat-label>
+                        <input matInput placeholder="Misol: ALPINE 5W-30" formControlName="oilType">
+                        <mat-icon matSuffix>local_gas_station</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Mator moyi (Litr)</mat-label>
+                        <input matInput placeholder="Ishlatilgan moy miqdori" formControlName="oilQuantity">
+                        <mat-icon matSuffix>local_drink</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="w-100 justify-content-center">
+                <div class="text-center">
+                    <mat-button-toggle-group formControlName="filters" name="filters" aria-label="Filters" multiple style="border: 2px dashed #3f50b5">
+                        <mat-button-toggle value="fil1" class="px-5 py-2" style="border-right: 2px dashed #3F50B5FF">Moy filtri <mat-icon class="text-success mx-2">filter_1</mat-icon></mat-button-toggle>
+                        <mat-button-toggle value="fil2" class="px-5 py-2" style="border-right: 2px dashed #3F50B5FF">Yoqilg'i filtri <mat-icon class="text-success mx-2">filter_2</mat-icon></mat-button-toggle>
+                        <mat-button-toggle value="fil3" class="px-5 py-2" style="border-right: 2px dashed #3F50B5FF">Xavo filtiri <mat-icon class="text-success mx-2">filter_3</mat-icon></mat-button-toggle>
+                        <mat-button-toggle value="fil4" class="px-5 py-2" style="border-right: 2px dashed #3F50B5FF">Salon filtri <mat-icon class="text-success mx-2">filter_4</mat-icon></mat-button-toggle>
+                        <mat-button-toggle value="fil5" class="px-5 py-2">Pampers <mat-icon class="text-success mx-2">filter_5</mat-icon></mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+            </div>
+        </div>
+
+        <mat-dialog-actions align="end">
+            <button mat-fab color="primary" type="submit" aria-label="Save">
+                <mat-icon>save</mat-icon>
+            </button>
+            <button mat-fab mat-dialog-close color="primary" aria-label="Close">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

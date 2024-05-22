@@ -9,6 +9,10 @@ export interface car_param_data {
   salonFilter: string;
 }
 
+export interface users {
+  fullName: string
+}
+
 export interface dashboard_data_dto_v1 {
   id: number;
   carNumber: string;
@@ -16,6 +20,7 @@ export interface dashboard_data_dto_v1 {
   carParams: car_param_data[];
   carModelCode: string;
   carColor: string;
+  users: users;
 }
 
 export interface pageable_data_dto_v1 {

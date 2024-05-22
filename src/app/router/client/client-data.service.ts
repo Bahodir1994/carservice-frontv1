@@ -16,12 +16,10 @@ export class ClientDataService {
 
   getPaginatedData(page: number, size: number, param: string): Observable<PaginatedDataResponse> {
     const accessToken = this.keycloak.getToken();
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     });
-
     return this.http.get<any>(`http://localhost:8761/products?page=${page}&size=${size}&searchparam=${param}`, { headers })
         .pipe(
             map(response => ({
@@ -30,5 +28,6 @@ export class ClientDataService {
               pageable: response.pageable
             }))
         );
-  }
+  };
+
 }
