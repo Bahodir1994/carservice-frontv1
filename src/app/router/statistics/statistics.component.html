@@ -1,1 +1,86 @@
-<p>statistics works!</p>
+<!--<div class="text-center">-->
+<!--    <img class="my-auto"sizes="50%" src="assets/icons/card-icon/wait.jpg"/>-->
+<!--</div>-->
+
+
+<mat-card>
+    <mat-card-content>
+        <div class="row">
+            <div class="col">
+                    <mat-form-field appearance="outline" class="input-group" style="position: relative">
+                        <mat-label>Izlash</mat-label>
+                        <input id="searchInputClients" matInput #searchInputData (keyup)="applyFilter($event)">
+                    </mat-form-field>
+                    <div class="w-100" style="height: 60vh; overflow-y: auto">
+                        <ol class="list-group list-group-item-action my-1" *ngFor="let item of data" (click)="onItemClick(item.id, item.fullName)" style="cursor:pointer;">
+                            <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-start" [class.active]="lastSelectedUserId === item.id">
+                                <span class="badge text-bg-light rounded-5">
+                                    <mat-icon>person</mat-icon>
+                                </span>
+                                <div class="ms-2 me-auto">
+                                    <div>{{item.fullName}}</div>
+                                    {{item.phone}}
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+            </div>
+            <div class="col-10 border-start">
+                <mat-card style="box-shadow: none!important;" class="rounded border border-2 border-secondary-subtle">
+                    <mat-card-header class="rounded-bottom shadow-lg text-white" style="background-color: #3f51b5">
+                        <mat-card-title class="mb-4">{{client_fullName !== '' ? client_fullName : 'танланмаган'}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="bg-chat-img bg-info-subtle" style="height: 65vh; overflow-y: auto">
+                        <div class="w-100 d-flex" *ngFor="let messageBody of data_v2" [@fadeIn]>
+                            <div class="text-start" style="width: 5%">
+                                <img src="assets/icons/card-iconimg/icon-master.gif" />
+                            </div>
+                            <div class="text-start"  style="width: 95%">
+                                <mat-card class="my-2 w-50" style="border-radius: 0 10px 10px 10px">
+                                    <mat-card-header class="justify-content-end">
+                                        <mat-card-subtitle>
+                                            {{messageBody.messageUsers.insTime | date: 'medium'}}
+                                        </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content class="my-2">
+                                        {{messageBody.messageUsers.message}}
+                                    </mat-card-content>
+                                    <mat-divider></mat-divider>
+                                    <mat-card-footer>
+                                        <div class="mx-2 mt-2 d-flex justify-content-lg-start">
+                                            <mat-icon class="pe-2">check_circle_outline</mat-icon>
+                                            <h4 class="ms-2">Xabar jo'natigan</h4>
+                                        </div>
+                                    </mat-card-footer>
+                                </mat-card>
+                            </div>
+                        </div>
+                        <div class="w-25 pt-5 m-auto" *ngIf="data_v2.length === 0">
+                            <mat-card>
+                                <mat-card-content class="text-center">
+                                    <img src="assets/icons/card-icon/icons-no-message.gif" />
+                                </mat-card-content>
+                                <mat-card-footer class="text-center text-warning">
+                                    <h2>Xabar jo'natilmagan</h2>
+                                </mat-card-footer>
+                            </mat-card>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-footer class="d-flex shadow-lg">
+                        <div class="col-11">
+                            <mat-form-field class="example-full-width w-100 mt-2 ms-2">
+                                <mat-label>Xabarni shu yerga yozing</mat-label>
+                                <textarea #messageBody matInput></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-1 text-center my-auto">
+                            <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon" (click)="onSubmit(messageBody.value, '')">
+                                <mat-icon>send</mat-icon>
+                            </button>
+                        </div>
+                    </mat-card-footer>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

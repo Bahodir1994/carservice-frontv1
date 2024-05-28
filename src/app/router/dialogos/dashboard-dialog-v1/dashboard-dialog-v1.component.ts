@@ -28,7 +28,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DashboardDialogV1Component implements OnInit {
   carParamForm: FormGroup;
-  private loadData: (page: number, size: number, param: string) => void;
+  public loadData: (page: number, size: number, draw: number, param: string) => void;
 
   constructor(
       @Inject(MAT_DIALOG_DATA) public data: any,
@@ -43,6 +43,7 @@ export class DashboardDialogV1Component implements OnInit {
       distanceTo: ['', Validators.required],
       oilType: ['', Validators.required],
       oilQuantity: ['', Validators.required],
+      serviceCharge: ['', Validators.required],
       filters: ['']
     });
   }
@@ -61,9 +62,9 @@ export class DashboardDialogV1Component implements OnInit {
         carId: this.data.selectedItem
       };
 
-      this.http.post('http://localhost:8761/dashboard', requestBody, { headers })
+      this.http.post('http://192.168.224.18:8761/dashboard', requestBody, { headers })
           .subscribe(response => {
-            this.loadData(0, 8, '');
+            this.loadData(0, 8, Math.floor(Math.random() * 100) + 1, '');
             this.dialogRef.close(true);
             this.snackBar.open('Ma\'lumotlar saqlandi', 'yopish', {
               duration: 3000,
@@ -81,6 +82,6 @@ export class DashboardDialogV1Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData(0, 8, ''); // Call loadData on init
+    this.loadData(0, 8, Math.floor(Math.random() * 100) + 1, ''); // Call loadData on init
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
@@ -57,13 +57,12 @@ import {KeycloakOperationService} from "../../services/keycloak.service";
 export class PanelComponent implements OnInit {
     username: string | any
     userProfile: any | null = null;
-    badge_visible = false;
-    badge_visibility() {this.badge_visible = true;}
 
     constructor(
         private router: Router,
         private keyCloakService: KeycloakOperationService,
     ) {}
+
 
     isActive(url: string): boolean {
         return this.router.url === url;

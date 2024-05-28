@@ -3,10 +3,13 @@ export interface car_param_data {
     mileage: number;
     toMileage: number;
     oilModel: string;
-    fillingVolume: string;
-    oilFilter: string;
-    airFilter: string;
-    salonFilter: string;
+    fillingVolume: boolean;
+    oilFilter: boolean;
+    fuelFilter: boolean;
+    airFilter: boolean;
+    salonFilter: boolean;
+    pampersFilter: boolean;
+    isActually: boolean;
 }
 
 export interface client_cars_data_dto_v1 {

@@ -3,10 +3,13 @@ export interface car_param_data {
   mileage: number;
   toMileage: number;
   oilModel: string;
-  fillingVolume: string;
-  oilFilter: string;
-  airFilter: string;
-  salonFilter: string;
+  fillingVolume: boolean;
+  oilFilter: boolean;
+  fuelFilter: boolean;
+  airFilter: boolean;
+  salonFilter: boolean;
+  pampersFilter: boolean;
+  isActually: boolean;
 }
 
 export interface users {
@@ -32,4 +35,12 @@ export interface PaginatedDataResponse {
   data: dashboard_data_dto_v1[]; // Массив данных, который приходит от сервера
   totalElements: number; // Общее количество страниц
   pageable: pageable_data_dto_v1[]; // Текущая страница
+}
+
+
+/***************************************************************/
+
+export interface chart_data_dto_v1 {
+  category: string;
+  value: number;
 }

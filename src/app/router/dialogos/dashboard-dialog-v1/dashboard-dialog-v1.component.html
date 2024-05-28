@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="w-100 justify-content-center">
+            <div class="w-100 d-flex justify-content-center">
                 <div class="text-center">
                     <mat-button-toggle-group formControlName="filters" name="filters" aria-label="Filters" multiple style="border: 2px dashed #3f50b5">
                         <mat-button-toggle value="fil1" class="px-5 py-2" style="border-right: 2px dashed #3F50B5FF">Moy filtri <mat-icon class="text-success mx-2">filter_1</mat-icon></mat-button-toggle>
@@ -43,6 +43,13 @@
                         <mat-button-toggle value="fil5" class="px-5 py-2">Pampers <mat-icon class="text-success mx-2">filter_5</mat-icon></mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>
+            </div>
+            <div class="w-100 pt-3 text-center">
+                <mat-form-field appearance="outline" class="w-25">
+                    <mat-label>Xizmat xaqqi (so'm)</mat-label>
+                    <input matInput placeholder="0000" formControlName="serviceCharge">
+                    <mat-icon matSuffix>money</mat-icon>
+                </mat-form-field>
             </div>
         </div>
 

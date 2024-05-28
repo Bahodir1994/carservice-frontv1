@@ -31,6 +31,7 @@ import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {KeycloakService} from 'keycloak-angular';
 import {MatTabsModule} from "@angular/material/tabs";
 
+
 @Component({
     selector: 'app-client',
     standalone: true,
@@ -57,6 +58,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 export class ClientComponent implements AfterViewInit {
     client_fullName = '';
     data: products_data_dto_v1[] = [];
+    lastSelectedUserId = '';
     recordsTotal = 0;
     pageable: pageable_data_dto_v1[] = []
     responseData: client_cars_data_dto_v1[] = [];
@@ -78,16 +80,16 @@ export class ClientComponent implements AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.loadData(0, 10, ''); // загрузка первой страницы с размером страницы 10
+        this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, ''); // загрузка первой страницы с размером страницы 10
     }
 
     applyFilter(event: any) {
         const value = (event.target as HTMLInputElement).value; // Получаем значение поля ввода
-        this.loadData(0, 10, value.trim().toLowerCase());
+        this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, value.trim().toLowerCase());
     }
 
-    loadData(page: number, size: number, param: string) {
-        this.dataService.getPaginatedData(page, size, param)
+    loadData(page: number, size: number, draw: number, param: string) {
+        this.dataService.getPaginatedData(page, size, draw, param)
             .subscribe((response: PaginatedDataResponse) => {
                 this.data = response.data;
                 this.recordsTotal = response.totalElements;
@@ -98,7 +100,7 @@ export class ClientComponent implements AfterViewInit {
     onPageChange(event: any, searchParam: string) {
         const newPage = event.pageIndex;
         const newSize = event.pageSize;
-        this.loadData(newPage, newSize, searchParam);
+        this.loadData(newPage, newSize,Math.floor(Math.random() * 100) + 1, searchParam);
     }
 
     onSubmit() {
@@ -110,9 +112,9 @@ export class ClientComponent implements AfterViewInit {
                 'Authorization': `Bearer ${accessToken}`
             });
 
-            this.http.post('http://localhost:8761/products', this.carForm.value, {headers})
+            this.http.post('http://192.168.224.18:8761/products', this.carForm.value, {headers})
                 .subscribe(response => {
-                    this.ngOnInit()
+                    this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, ''); // загрузка первой страницы с размером страницы 10
                 }, error => {
                     console.error('Error:', error);
                 });
@@ -120,7 +122,8 @@ export class ClientComponent implements AfterViewInit {
     };
 
     onItemClick(itemId: string, fullName: string) {
-        this.client_fullName = fullName
+        this.client_fullName = fullName;
+        this.lastSelectedUserId = itemId;
         const accessToken = localStorage.getItem('accessToken');
 
         const headers = new HttpHeaders({
@@ -128,7 +131,10 @@ export class ClientComponent implements AfterViewInit {
             'Authorization': `Bearer ${accessToken}`
         });
 
-        const url = `http://localhost:8761/products/${itemId}`;
+        let draw = Math.floor(Math.random() * 100) + 1;
+
+
+        const url = `http://192.168.224.18:8761/products/${draw}/${itemId}`;
 
         this.http.get<client_cars_data_dto_v1[]>(url, {headers}).subscribe(
             (response: client_cars_data_dto_v1[]) => {
@@ -153,6 +159,6 @@ export class ClientComponent implements AfterViewInit {
     ];
 
     ngAfterViewInit(): void {
-        this.loadData(0, 10, '');
+        this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, '');
     }
 }

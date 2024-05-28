@@ -30,9 +30,15 @@ tr:hover {
 }
 
 .mat-list-element:hover {
-    background-color: rgba(236, 212, 255, 0.33);
+    background-color: rgba(22, 78, 164, 0.33);
 }
 
 .list-element-in:hover {
     color: #ffffff!important;
+}
+
+.bg-card-v2 {
+    background-image: url("../../../assets/icons/card-icon/wait.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }

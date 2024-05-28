@@ -1,0 +1,15 @@
+.bg-chat-img {
+    background-image: url("../../../assets/icons/card-iconimg/chat-bg-v1.jpg");
+}
+
+.shadow-bottom {
+    -webkit-box-shadow: 0px 8px 12px 11px rgba(34, 60, 80, 0.53);
+    -moz-box-shadow: 0px 8px 12px 11px rgba(34, 60, 80, 0.53);
+    box-shadow: 0px 8px 12px 11px rgba(34, 60, 80, 0.53);
+}
+
+.shadow-top {
+    -webkit-box-shadow: 0px -3px 12px 11px rgba(34, 60, 80, 0.53);
+    -moz-box-shadow: 0px -3px 12px 11px rgba(34, 60, 80, 0.53);
+    box-shadow: 0px -3px 12px 11px rgba(34, 60, 80, 0.53);
+}

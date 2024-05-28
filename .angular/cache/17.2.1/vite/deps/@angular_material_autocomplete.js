@@ -1,7 +1,7 @@
 import {
   MAT_FORM_FIELD,
   MatFormField
-} from "./chunk-UXFQSYCE.js";
+} from "./chunk-RUGHQX5Y.js";
 import {
   animate,
   group,
@@ -9,23 +9,23 @@ import {
   style,
   transition,
   trigger
-} from "./chunk-MZ7FOUFQ.js";
+} from "./chunk-IC3YRDD6.js";
 import {
   Overlay,
   OverlayConfig,
   OverlayModule
-} from "./chunk-7KXGX55N.js";
+} from "./chunk-53U7LSJH.js";
 import {
   CdkScrollableModule,
   ViewportRuler
-} from "./chunk-2GSE7VDK.js";
+} from "./chunk-C2HBJJO2.js";
 import {
   TemplatePortal
-} from "./chunk-PMQ4ROK5.js";
-import "./chunk-E6NIA5RK.js";
+} from "./chunk-IBKAACOL.js";
 import {
   NG_VALUE_ACCESSOR
-} from "./chunk-ZEA4MP4X.js";
+} from "./chunk-OKLI6Q7W.js";
+import "./chunk-Q4T7HXOA.js";
 import {
   MAT_OPTGROUP,
   MAT_OPTION_PARENT_COMPONENT,
@@ -36,12 +36,12 @@ import {
   MatOptionSelectionChange,
   _countGroupLabelsBeforeOption,
   _getOptionScrollPosition
-} from "./chunk-2WWWVIIY.js";
+} from "./chunk-ODCPUT5Z.js";
 import {
   ActiveDescendantKeyManager,
   addAriaReferencedId,
   removeAriaReferencedId
-} from "./chunk-RIR7XLE5.js";
+} from "./chunk-HFYTOFCM.js";
 import {
   DOWN_ARROW,
   Directionality,
@@ -52,11 +52,11 @@ import {
   UP_ARROW,
   _getEventTarget,
   hasModifierKey
-} from "./chunk-BYDSM3HQ.js";
+} from "./chunk-F75GHLTG.js";
 import {
   CommonModule,
   DOCUMENT
-} from "./chunk-JADT6HXV.js";
+} from "./chunk-QCS7LRMQ.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -112,7 +112,7 @@ import {
   ɵɵrestoreView,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-C4O4XXHP.js";
+} from "./chunk-NLQ2RAJK.js";
 import {
   Subject,
   Subscription,
@@ -124,7 +124,8 @@ import {
   switchMap,
   take,
   tap
-} from "./chunk-QVH6O742.js";
+} from "./chunk-OZBAJYQF.js";
+import "./chunk-ASLTLD6L.js";
 
 // node_modules/@angular/material/fesm2022/autocomplete.mjs
 var _c0 = ["panel"];

@@ -4,7 +4,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
       keycloak.init({
           config: {
-              url: 'http://localhost:8080',
+              url: 'http://192.168.224.18:8080',
               realm: 'carappservicev1',
               clientId: 'carapp-clientv1',
           },

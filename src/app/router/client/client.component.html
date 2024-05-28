@@ -1,7 +1,7 @@
 <h2>Ustaxona mijozlarini qo'shish</h2>
 
 <mat-accordion class="example-headers-align" multi>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Mijoz Personal ma'lumotlari saqlash
@@ -70,7 +70,6 @@
                     <div class="row">
                         <div class="col">
                             <mat-list>
-                                <div mat-subheader class="list-title">Mijozlar ro'yxati</div>
                                 <mat-form-field appearance="outline" class="input-group">
                                     <mat-label>Izlash</mat-label>
                                     <input
@@ -79,14 +78,18 @@
                                             (keyup)="applyFilter($event)"
                                     >
                                 </mat-form-field>
-                                <mat-list-item *ngFor="let item of data"
-                                               class="mat-list-element"
-                                               style="border-bottom: 1px dotted cornflowerblue"
-                                               (click)="onItemClick(item.id, item.fullName)">
-                                    <mat-icon matListItemIcon>folder</mat-icon>
-                                    <div matListItemTitle>{{item.fullName}}</div>
-                                    <div matListItemLine>{{item.phone}}</div>
-                                </mat-list-item>
+                                <ol class="list-group list-group-item-action my-1" *ngFor="let item of data" (click)="onItemClick(item.id, item.fullName)" style="cursor:pointer;">
+                                    <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-start" [class.active]="lastSelectedUserId === item.id">
+                                <span class="badge text-bg-light rounded-5">
+                                    <mat-icon>person</mat-icon>
+                                </span>
+                                        <div class="ms-2 me-auto">
+                                            <div>{{item.fullName}}</div>
+                                            {{item.phone}}
+                                        </div>
+                                    </li>
+                                </ol>
+
                                 <mat-paginator
                                         hidePageSize=true
                                         [length]="recordsTotal"
@@ -96,21 +99,25 @@
                             </mat-list>
                         </div>
                         <div class="col-10 border-start">
-                            <mat-card style="box-shadow: none!important;">
+                            <mat-card style="box-shadow: none!important; min-height: 50vh!important;" class="bg-card-v2">
                                 <mat-card-header>
                                     <mat-card-title>{{client_fullName !== '' ? client_fullName : 'танланмаган'}}</mat-card-title>
                                 </mat-card-header>
                                 <mat-tab-group>
-                                    <mat-tab label="{{item.carNumber}}" *ngFor="let item of responseData">
+                                    <mat-tab label="{{item.carNumber}}" color="text-success" *ngFor="let item of responseData">
                                         <mat-card-content class="h-100">
                                             <div class="row h-100 col-md-12 border-primary">
                                                 <div class="row col-md-6">
-                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
-                                                        <mat-card class="example-card bg-success-subtle">
+                                                    <div class="col-md-6 col-sm-12 py-2" >
+                                                        <mat-card class="example-card">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
                                                                     <mat-card-title class="text-primary">Almashtirildi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary p-2 rounded">8900 (km)</mat-card-subtitle>
+                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                        <span *ngIf="itemCarParam.isActually">
+                                                                            {{itemCarParam.mileage}} (km)
+                                                                        </span>
+                                                                    </mat-card-subtitle>
                                                                     <img mat-card-sm-image src="assets/icons/card-icon/icon-start-oil.png" />
                                                                 </mat-card-title-group>
                                                             </mat-card-header>
@@ -118,12 +125,16 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
-                                                        <mat-card class="example-card bg-success-subtle">
+                                                    <div class="col-md-6 col-sm-12 py-2" >
+                                                        <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
                                                                     <mat-card-title class="text-primary">Yangilash</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary p-2 rounded">9900 (km)</mat-card-subtitle>
+                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                        <span *ngIf="itemCarParam.isActually">
+                                                                            {{itemCarParam.toMileage}} (km)
+                                                                        </span>
+                                                                    </mat-card-subtitle>
                                                                     <img mat-card-sm-image src="assets/icons/card-icon/icon-change-oil.png" />
                                                                 </mat-card-title-group>
                                                             </mat-card-header>
@@ -131,12 +142,16 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
-                                                        <mat-card class="example-card bg-success-subtle">
+                                                    <div class="col-md-6 col-sm-12 py-2" >
+                                                        <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
                                                                     <mat-card-title class="text-primary">Turi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary p-2 rounded">ALPINE 15W-30</mat-card-subtitle>
+                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                        <span *ngIf="itemCarParam.isActually">
+                                                                            {{itemCarParam.oilModel}}
+                                                                        </span>
+                                                                    </mat-card-subtitle>
                                                                     <img mat-card-sm-image src="assets/icons/card-icon/icon-gas-type.png" >
                                                                 </mat-card-title-group>
                                                             </mat-card-header>
@@ -144,12 +159,16 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12 py-2" style="border: 1px dotted #3f50b5;">
-                                                        <mat-card class="example-card bg-success-subtle">
+                                                    <div class="col-md-6 col-sm-12 py-2" >
+                                                        <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
                                                                     <mat-card-title class="text-primary">Ishlatildi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary p-2 rounded">4.7 (L)</mat-card-subtitle>
+                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                        <span *ngIf="itemCarParam.isActually">
+                                                                            {{itemCarParam.fillingVolume}} (litr)
+                                                                        </span>
+                                                                    </mat-card-subtitle>
                                                                     <img mat-card-sm-image src="assets/icons/card-icon/icon-gas-tank.png" >
                                                                 </mat-card-title-group>
                                                             </mat-card-header>
@@ -157,21 +176,55 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
+
+                                                    <div class="col-md-12 col-sm-12 py-2" >
+                                                        <mat-card class="example-card ">
+                                                            <mat-card-header>
+                                                                <mat-card-title-group>
+                                                                    <mat-card-title class="text-primary">O'rnatilgan filtrlar</mat-card-title>
+                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                        <div *ngIf="itemCarParam.isActually" class="row w-100 justify-content-start">
+                                                                                <div *ngIf="itemCarParam.oilFilter">
+                                                                                    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+                                                                                        <mat-chip-option selected color="primary">Moy filtri</mat-chip-option>
+                                                                                    </mat-chip-listbox>
+                                                                                </div>
+                                                                                <div *ngIf="itemCarParam.fuelFilter">
+                                                                                    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+                                                                                        <mat-chip-option selected color="primary">Yoqilg'i filtri</mat-chip-option>
+                                                                                    </mat-chip-listbox>
+                                                                                </div>
+                                                                                <div *ngIf="itemCarParam.airFilter">
+                                                                                    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+                                                                                        <mat-chip-option selected color="primary">Xavo filtri</mat-chip-option>
+                                                                                    </mat-chip-listbox>
+                                                                                </div>
+                                                                                <div *ngIf="itemCarParam.salonFilter">
+                                                                                    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+                                                                                        <mat-chip-option selected color="primary">Salon filtri</mat-chip-option>
+                                                                                    </mat-chip-listbox>
+                                                                                </div>
+                                                                                <div *ngIf="itemCarParam.pampersFilter">
+                                                                                    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+                                                                                        <mat-chip-option selected color="primary">Pampers</mat-chip-option>
+                                                                                    </mat-chip-listbox>
+                                                                                </div>
+                                                                            </div>
+                                                                    </mat-card-subtitle>
+                                                                </mat-card-title-group>
+                                                            </mat-card-header>
+                                                            <mat-card-content>
+                                                            </mat-card-content>
+                                                        </mat-card>
+                                                    </div>
                                                 </div>
-<!--                                                <div *ngFor="let item of responseData">-->
-<!--                                                    <p>id: {{ item.id }}</p>-->
-<!--                                                    <p>carNumber: {{ item.carNumber }}</p>-->
-<!--                                                    <p>createdDate: {{ item.createdDate }}</p>-->
-<!--                                                    <p>carParams: {{ item.carParams }}</p>-->
-<!--                                                    <p>carModelCode: {{ item.carModelCode }}</p>-->
-<!--                                                    <p>carColor: {{ item.carColor }}</p>-->
-<!--                                                </div>-->
+
                                                 <div class="col-md-6">
                                                     <div class="col-md-12">
-                                                        <mat-card class="example-card p-2" style="border: 1px dotted #3f50b5">
+                                                        <mat-card class="example-card mt-2" style="border: 1px dotted #3f50b5">
                                                             <mat-card-content>
                                                                 <div class="w-100 text-center">
-                                                                    <img mat-card-image style="width: 75%;" src="assets/icons/car-models/001.png" alt="Photo of a Shiba Inu">
+                                                                    <img mat-card-image style="width: 61%;" src="assets/icons/car-models/001.png">
                                                                 </div>
                                                             </mat-card-content>
                                                         </mat-card>

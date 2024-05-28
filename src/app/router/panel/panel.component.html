@@ -5,13 +5,15 @@
     <span>{{username}}</span>
     <span class="example-spacer"></span>
 
-    <a (click)="logout()" mat-raised-button color="accent">Chiqish</a>
-    <button (click)="badge_visibility()"  mat-icon-button>
-        <mat-icon matBadgeColor="accent" matBadge="15" [matBadgeHidden]="badge_visible" matBadgeSize="small">notifications</mat-icon>
-    </button>
+    <div style="width: 80px">
+        <button mat-icon-button class="mr-5">
+            <mat-icon matBadgeSize="small">message</mat-icon>
+        </button>
+    </div>
+    <a (click)="logout()" mat-raised-button color="accent" class="ml-5">Chiqish</a>
 </mat-toolbar>
 <mat-drawer-container class="content-container" autosize>
-    <mat-drawer #drawer opened="true" mode="side" position="start" class="sidenav-bg">
+    <mat-drawer #drawer opened="false" mode="side" position="start" class="sidenav-bg">
         <mat-nav-list>
             <mat-list-item class="text-lef w-100">
                 <button
@@ -41,8 +43,8 @@
                     [color]="isActive('/statistics') ? 'primary' : ''"
                     [class]="{ 'active-link': isActive('/statistics')}"
                 >
-                    <mat-icon>explore</mat-icon>
-                    HISOBOTLAR
+                    <mat-icon>message</mat-icon>
+                    YO'LLANGAN XABARLAR
                 </button>
             </mat-list-item>
             <mat-divider class="m-d-p-5"></mat-divider>
