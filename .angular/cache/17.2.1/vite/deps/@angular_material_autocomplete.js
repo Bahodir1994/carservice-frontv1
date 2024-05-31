@@ -11,6 +11,9 @@ import {
   trigger
 } from "./chunk-IC3YRDD6.js";
 import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-OKLI6Q7W.js";
+import {
   Overlay,
   OverlayConfig,
   OverlayModule
@@ -22,9 +25,6 @@ import {
 import {
   TemplatePortal
 } from "./chunk-IBKAACOL.js";
-import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-OKLI6Q7W.js";
 import "./chunk-Q4T7HXOA.js";
 import {
   MAT_OPTGROUP,

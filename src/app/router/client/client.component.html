@@ -112,8 +112,8 @@
                                                         <mat-card class="example-card">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
-                                                                    <mat-card-title class="text-primary">Almashtirildi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                    <mat-card-title class="">Almashtirildi</mat-card-title>
+                                                                    <mat-card-subtitle class=" rounded" *ngFor="let itemCarParam of item.carParams">
                                                                         <span *ngIf="itemCarParam.isActually">
                                                                             {{itemCarParam.mileage}} (km)
                                                                         </span>
@@ -129,8 +129,8 @@
                                                         <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
-                                                                    <mat-card-title class="text-primary">Yangilash</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                    <mat-card-title class="">Yangilash</mat-card-title>
+                                                                    <mat-card-subtitle class=" rounded" *ngFor="let itemCarParam of item.carParams">
                                                                         <span *ngIf="itemCarParam.isActually">
                                                                             {{itemCarParam.toMileage}} (km)
                                                                         </span>
@@ -146,8 +146,8 @@
                                                         <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
-                                                                    <mat-card-title class="text-primary">Turi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                    <mat-card-title class="">Turi</mat-card-title>
+                                                                    <mat-card-subtitle class=" rounded" *ngFor="let itemCarParam of item.carParams">
                                                                         <span *ngIf="itemCarParam.isActually">
                                                                             {{itemCarParam.oilModel}}
                                                                         </span>
@@ -163,8 +163,8 @@
                                                         <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
-                                                                    <mat-card-title class="text-primary">Ishlatildi</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                    <mat-card-title class="">Ishlatildi</mat-card-title>
+                                                                    <mat-card-subtitle class=" rounded" *ngFor="let itemCarParam of item.carParams">
                                                                         <span *ngIf="itemCarParam.isActually">
                                                                             {{itemCarParam.fillingVolume}} (litr)
                                                                         </span>
@@ -181,8 +181,8 @@
                                                         <mat-card class="example-card ">
                                                             <mat-card-header>
                                                                 <mat-card-title-group>
-                                                                    <mat-card-title class="text-primary">O'rnatilgan filtrlar</mat-card-title>
-                                                                    <mat-card-subtitle class="text-primary rounded" *ngFor="let itemCarParam of item.carParams">
+                                                                    <mat-card-title class="">O'rnatilgan filtrlar</mat-card-title>
+                                                                    <mat-card-subtitle class=" rounded" *ngFor="let itemCarParam of item.carParams">
                                                                         <div *ngIf="itemCarParam.isActually" class="row w-100 justify-content-start">
                                                                                 <div *ngIf="itemCarParam.oilFilter">
                                                                                     <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">

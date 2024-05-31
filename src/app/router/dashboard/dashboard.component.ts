@@ -17,7 +17,9 @@ import {Router} from "@angular/router";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {DashboardDialogV1Component} from "../dialogos/dashboard-dialog-v1/dashboard-dialog-v1.component";
 import * as Highcharts from 'highcharts';
+import darkUnica from 'highcharts/themes/dark-unica';
 
+darkUnica(Highcharts);
 
 @Component({
     selector: 'app-dashboard',

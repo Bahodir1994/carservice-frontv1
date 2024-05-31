@@ -38,7 +38,6 @@ tr:hover {
 }
 
 .bg-card-v2 {
-    background-image: url("../../../assets/icons/card-icon/wait.jpg");
     background-repeat: no-repeat;
     background-size: contain;
 }

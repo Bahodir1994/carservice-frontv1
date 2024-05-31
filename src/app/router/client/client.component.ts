@@ -31,7 +31,6 @@ import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {KeycloakService} from 'keycloak-angular';
 import {MatTabsModule} from "@angular/material/tabs";
 
-
 @Component({
     selector: 'app-client',
     standalone: true,
@@ -67,7 +66,7 @@ export class ClientComponent implements AfterViewInit {
         private dataService: ClientDataService,
         private fb: FormBuilder,
         private http: HttpClient,
-        private _snackBar: MatSnackBar,
+        private snackBar: MatSnackBar,
         protected readonly keycloak: KeycloakService
     ) {
         this.carForm = this.fb.group({
@@ -115,6 +114,11 @@ export class ClientComponent implements AfterViewInit {
             this.http.post('http://192.168.224.18:8761/products', this.carForm.value, {headers})
                 .subscribe(response => {
                     this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, ''); // загрузка первой страницы с размером страницы 10
+                    this.snackBar.open('Ma\'lumotlar saqlandi', 'yopish', {
+                        duration: 3000,
+                        verticalPosition: 'top',
+                        horizontalPosition: 'center'
+                    });
                 }, error => {
                     console.error('Error:', error);
                 });

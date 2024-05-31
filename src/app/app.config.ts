@@ -31,6 +31,6 @@ export const appConfig: ApplicationConfig = {
     },
     provideHttpClient(
       withInterceptorsFromDi() // tell httpClient to use interceptors from DI
-    ), provideAnimationsAsync(), provideAnimationsAsync(),
+    ), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 };
