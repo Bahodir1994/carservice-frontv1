@@ -62,7 +62,7 @@ export class DashboardDialogV1Component implements OnInit {
         carId: this.data.selectedItem
       };
 
-      this.http.post('http://192.168.224.18:8761/dashboard', requestBody, { headers })
+      this.http.post('http://localhost:8761/dashboard', requestBody, { headers })
           .subscribe(response => {
             this.loadData(0, 8, Math.floor(Math.random() * 100) + 1, '');
             this.dialogRef.close(true);

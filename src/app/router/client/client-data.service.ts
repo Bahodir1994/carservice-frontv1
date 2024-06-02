@@ -20,7 +20,7 @@ export class ClientDataService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     });
-    return this.http.get<any>(`http://192.168.224.18:8761/products?page=${page}&size=${size}&draw=${draw}&searchparam=${param}`, { headers })
+    return this.http.get<any>(`http://localhost:8761/products?page=${page}&size=${size}&draw=${draw}&searchparam=${param}`, { headers })
         .pipe(
             map(response => ({
               data: response.content,

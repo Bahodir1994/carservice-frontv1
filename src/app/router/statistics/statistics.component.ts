@@ -129,7 +129,7 @@ export class StatisticsComponent implements OnInit{
       clientId: this.lastSelectedUserId,
     };
 
-    this.http.post('http://192.168.224.18:8761/messages', formData, {headers})
+    this.http.post('http://localhost:8761/messages', formData, {headers})
         .subscribe(response => {
           this.onItemClick(this.lastSelectedUserId, '');
           this.snackBar.open('Ma\'lumotlar saqlandi', 'yopish', {
@@ -168,7 +168,7 @@ export class StatisticsComponent implements OnInit{
 
     let draw = Math.floor(Math.random() * 100) + 1;
 
-    const url = `http://192.168.224.18:8761/messages/${draw}/${item_id}`;
+    const url = `http://localhost:8761/messages/${draw}/${item_id}`;
 
     this.http.get<clients_permissions[]>(url, { headers }).subscribe(
         (response: clients_permissions[]) => {

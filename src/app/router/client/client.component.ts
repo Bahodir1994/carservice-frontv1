@@ -111,7 +111,7 @@ export class ClientComponent implements AfterViewInit {
                 'Authorization': `Bearer ${accessToken}`
             });
 
-            this.http.post('http://192.168.224.18:8761/products', this.carForm.value, {headers})
+            this.http.post('http://localhost:8761/products', this.carForm.value, {headers})
                 .subscribe(response => {
                     this.loadData(0, 10, Math.floor(Math.random() * 100) + 1, ''); // загрузка первой страницы с размером страницы 10
                     this.snackBar.open('Ma\'lumotlar saqlandi', 'yopish', {
@@ -138,7 +138,7 @@ export class ClientComponent implements AfterViewInit {
         let draw = Math.floor(Math.random() * 100) + 1;
 
 
-        const url = `http://192.168.224.18:8761/products/${draw}/${itemId}`;
+        const url = `http://localhost:8761/products/${draw}/${itemId}`;
 
         this.http.get<client_cars_data_dto_v1[]>(url, {headers}).subscribe(
             (response: client_cars_data_dto_v1[]) => {
