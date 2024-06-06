@@ -41,3 +41,7 @@ tr:hover {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.uppercase-text {
+    text-transform: uppercase;
+}

@@ -48,6 +48,17 @@
                 </button>
             </mat-list-item>
             <mat-divider class="m-d-p-5"></mat-divider>
+            <mat-list-item class="text-lef w-100">
+                <button
+                        mat-flat-button [routerLink]="'/backlog'"
+                        [color]="isActive('/backlog') ? 'primary' : ''"
+                        [class]="{ 'active-link': isActive('/backlog')}"
+                >
+                    <mat-icon>money</mat-icon>
+                    QARZDORLIKLAR XISOBI
+                </button>
+            </mat-list-item>
+            <mat-divider class="m-d-p-5"></mat-divider>
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content >

@@ -20,7 +20,7 @@
                 <div class="col-3">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Mator moyi turi</mat-label>
-                        <input matInput placeholder="Misol: ALPINE 5W-30" formControlName="oilType">
+                        <input type="number" matInput placeholder="Misol: ALPINE 5W-30" formControlName="oilType">
                         <mat-icon matSuffix>local_gas_station</mat-icon>
                     </mat-form-field>
                 </div>
@@ -45,8 +45,14 @@
                 </div>
             </div>
             <div class="w-100 pt-3 text-center">
-                <mat-form-field appearance="outline" class="w-25">
+                <mat-form-field appearance="outline" class="w-25 mx-2">
                     <mat-label>Xizmat xaqqi (so'm)</mat-label>
+                    <input matInput placeholder="0000" formControlName="serviceCharge">
+                    <mat-icon matSuffix>money</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-25 mx-2">
+                    <mat-label>Olingan summa (so'm)</mat-label>
                     <input matInput placeholder="0000" formControlName="serviceCharge">
                     <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>

@@ -1,4 +1,8 @@
 import {
+  MatButton,
+  MatButtonModule
+} from "./chunk-TYPZQ3ZR.js";
+import {
   animate,
   state,
   style,
@@ -19,10 +23,6 @@ import {
   TemplatePortal
 } from "./chunk-IBKAACOL.js";
 import "./chunk-Q4T7HXOA.js";
-import {
-  MatButton,
-  MatButtonModule
-} from "./chunk-TYPZQ3ZR.js";
 import {
   MatCommonModule
 } from "./chunk-ODCPUT5Z.js";
